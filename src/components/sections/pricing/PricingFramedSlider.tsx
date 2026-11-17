@@ -14,7 +14,7 @@ type Spec = { label: string; value: string };
 
 type Plan = {
   name: string;
-  price: string;
+  price?: string;
   period?: string;
   description?: string;
   specs?: Spec[];
@@ -123,13 +123,20 @@ const PricingFramedSlider = ({
                         </dl>
                       )}
                       <div className="order-4 flex flex-col items-start gap-4 lg:order-3">
-                        <div className="flex items-baseline gap-3">
-                          <p className="text-[length:var(--text-h1)] leading-none [font-family:var(--font-heading)]">{item.price}</p>
-                          {item.period && <p className="text-[length:var(--text-label)] font-semibold uppercase tracking-[var(--label-tracking)] text-muted-foreground">{item.period}</p>}
-                        </div>
+                        {item.price && (
+                          <div className="flex items-baseline gap-3">
+                            <p className="text-[length:var(--text-h1)] leading-none [font-family:var(--font-heading)]">{item.price}</p>
+                            {item.period && <p className="text-[length:var(--text-label)] font-semibold uppercase tracking-[var(--label-tracking)] text-muted-foreground">{item.period}</p>}
+                          </div>
+                        )}
                         {item.description && <p className="max-w-[22rem] text-[length:var(--text-body)] leading-[1.5] text-muted-foreground">{item.description}</p>}
                         {item.cta && (
-                          <a href={item.cta.href} className="btn-secondary">
+                          <a
+                            href={item.cta.href}
+                            target={item.cta.href.startsWith("http") ? "_blank" : undefined}
+                            rel={item.cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                            className="btn-secondary flex items-center gap-2"
+                          >
                             {item.cta.text}
                           </a>
                         )}

@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 import NavbarSealCorner from "@/components/navbars/NavbarSealCorner";
 import FooterPlumPhone from "@/components/sections/footer/FooterPlumPhone";
+import FloatingWhatsApp from "@/components/kit/FloatingWhatsApp";
 
 export default function Layout() {
   return (
     <div className="relative isolate min-h-svh flex flex-col bg-background text-foreground" data-button="solid" data-card="filled" data-pattern="none">
       <header data-webild-section="Header">
         <NavbarSealCorner
-          brand="NkobTrek"
+          brand="Nkoub Saghro Adventures"
           cta={{
             text: "Book Now",
             href: "#contact-plum-form"
@@ -19,9 +20,9 @@ export default function Layout() {
       </main>
       <footer data-webild-section="Footer" data-section="footer">
         <FooterPlumPhone
-          brand="NkobTrek"
-          phone="+212 6 61 00 11 22"
-          email="contact@nkobtrek.ma"
+          brand="Nkoub Saghro Adventures"
+          phone="+212 629-152743"
+          email="guideberbretoursmoroco@gmail.com"
           address={[
             "Avenue Principal",
             "Nkob, Morocco"
@@ -70,15 +71,16 @@ export default function Layout() {
                 },
                 {
                   text: "WhatsApp Direct",
-                  href: "#contact-plum-form"
+                  href: "https://wa.me/212629152743"
                 }
               ]
             }
           ]}
-          legal="NkobTrek 2026. All rights reserved."
+          legal="Nkoub Saghro Adventures 2026. All rights reserved."
           toTopText="Back to top"
         />
       </footer>
+      <FloatingWhatsApp phone="212629152743" />
     </div>
   );
 }
