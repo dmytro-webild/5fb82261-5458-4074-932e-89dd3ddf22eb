@@ -76,7 +76,6 @@ export default function Layout() {
               ]
             }
           ]}
-          legal="Nkoub Saghro Adventures 2026. All rights reserved."
           toTopText="Back to top"
         />
       </footer>

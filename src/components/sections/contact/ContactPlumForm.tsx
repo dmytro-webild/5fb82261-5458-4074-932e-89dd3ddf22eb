@@ -2,10 +2,12 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { MapPin, ExternalLink } from "lucide-react";
 import EraTitle from "@/components/kit/EraTitle";
 import EraArchWindow from "@/components/kit/EraArchWindow";
 import { useKitMotion, usePreloadImages } from "@/components/kit/kitMotion";
 import Media from "@/components/kit/Media";
+import { useLanguage } from "@/utils/useLanguage";
 
 const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
@@ -40,6 +42,7 @@ const ContactPlumForm = ({
 }: ContactPlumFormProps) => {
   const reduce = useReducedMotion();
   const kit = useKitMotion();
+  const { t } = useLanguage();
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
   const timer = useRef<number>(undefined);
   const sectionRef = useRef<HTMLElement>(null);
@@ -108,9 +111,41 @@ const ContactPlumForm = ({
           </motion.form>
         </div>
 
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6 lg:justify-between">
+          <motion.div {...fade(0.3)} className="flex flex-col gap-4 border border-secondary-foreground/20 rounded-[1.25rem] p-5 bg-secondary/40 backdrop-blur-xs">
+            <div className="flex items-center gap-2.5 text-secondary-foreground font-semibold">
+              <MapPin className="h-5 w-5 text-primary shrink-0" />
+              <span className="text-[length:var(--text-body)] font-semibold uppercase tracking-[var(--label-tracking)]">
+                {t.contact.map.location}
+              </span>
+            </div>
+            
+            <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[280px] overflow-hidden rounded-xl border border-secondary-foreground/15 shadow-xs">
+              <iframe
+                title="Google Maps Location for Nkob, Jebel Saghro, Morocco"
+                src={t.contact.map.embedUrl}
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            <div className="flex items-center justify-start pt-1">
+              <a
+                href={t.contact.map.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary rounded-full inline-flex items-center gap-2 text-[length:var(--text-small)]"
+              >
+                <span>{t.contact.map.directions}</span>
+                <ExternalLink className="h-4 w-4 shrink-0" />
+              </a>
+            </div>
+          </motion.div>
+
           {imageSrc && (
-            <div className="flex w-full flex-col border border-secondary-foreground/25 p-2 lg:min-h-[28rem] lg:flex-1">
+            <div className="flex w-full flex-col border border-secondary-foreground/25 p-2 lg:min-h-[20rem]">
               <EraArchWindow className="aspect-[4/5] w-full lg:aspect-auto lg:flex-1">
                 <Media src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
               </EraArchWindow>
