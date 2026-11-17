@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { ReactLenis } from 'lenis/react'
 import { routes } from './routes'
 import Layout from './components/Layout'
+import { LanguageProvider } from './utils/languageContext'
 
 const pages = import.meta.glob('./pages/*.tsx')
 
@@ -215,28 +216,30 @@ function App() {
   useExternalLinksNewTab()
   useRenderProbe()
   return (
-    <ReactLenis root options={{ naiveDimensions: true }}>
-      <RenderErrorBoundary>
-        <Suspense
-          fallback={
-            <div className="flex items-center justify-center h-svh bg-background">
-              <div className="w-8 h-8 border-2 border-foreground border-t-transparent rounded-full animate-spin" />
-            </div>
-          }
-        >
-          <Routes>
-            <Route element={<Layout />}>
-              {routes.map((route) => {
-                const Page = getPageComponent(route.pageFile)
-                if (!Page) return null
-                return <Route key={route.path} path={route.path} element={<Page />} />
-              })}
-            </Route>
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Suspense>
-      </RenderErrorBoundary>
-    </ReactLenis>
+    <LanguageProvider>
+      <ReactLenis root options={{ naiveDimensions: true }}>
+        <RenderErrorBoundary>
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center h-svh bg-background">
+                <div className="w-8 h-8 border-2 border-foreground border-t-transparent rounded-full animate-spin" />
+              </div>
+            }
+          >
+            <Routes>
+              <Route element={<Layout />}>
+                {routes.map((route) => {
+                  const Page = getPageComponent(route.pageFile)
+                  if (!Page) return null
+                  return <Route key={route.path} path={route.path} element={<Page />} />
+                })}
+              </Route>
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
+        </RenderErrorBoundary>
+      </ReactLenis>
+    </LanguageProvider>
   )
 }
 
