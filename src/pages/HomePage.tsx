@@ -20,7 +20,7 @@ export default function HomePage() {
             "Desert valleys",
             "Berber bivouac"
           ]}
-          imageSrc="https://img.b2bpic.net/free-photo/wide-shot-cliff-desert-with-clear-blue_181624-11825.jpg"
+          imageSrc="https://img.b2bpic.net/free-photo/wide-shot-cliff-desert-with-clear-blue_181624-11825.jpg?_wi=1"
           imageAlt="wide desert cliff landscape"
           cta={{
             text: "View circuits",
@@ -47,7 +47,7 @@ export default function HomePage() {
             {
               title: "Camel bivouacs",
               description: "Overnight starry camps in comfortable desert tents with local traditional meals.",
-              imageSrc: "https://img.b2bpic.net/free-photo/wide-shot-cliff-desert-with-clear-blue_181624-11825.jpg",
+              imageSrc: "https://img.b2bpic.net/free-photo/wide-shot-cliff-desert-with-clear-blue_181624-11825.jpg?_wi=2",
               imageAlt: "wide desert cliff landscape"
             },
             {
