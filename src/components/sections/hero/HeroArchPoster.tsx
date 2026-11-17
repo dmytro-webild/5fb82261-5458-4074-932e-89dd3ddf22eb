@@ -1,6 +1,7 @@
 import { useRef, useState, type CSSProperties, type MouseEvent } from "react";
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform, type Transition } from "motion/react";
 import { MotionMedia } from "@/components/kit/Media";
+import { useLanguage } from "@/utils/useLanguage";
 
 type HeroArchPosterProps = {
   title?: string;
@@ -38,18 +39,19 @@ const FlowerMark = ({ className }: { className?: string }) => (
 );
 
 const HeroArchPoster = ({
-  title = "Villa Solenne",
-  script = "Sitges",
-  labelLeft = "A place",
-  labelRight = "to return to",
-  marquee = ["By day", "By night"],
-  imageSrc = "https://images.pexels.com/photos/35495060/pexels-photo-35495060.jpeg?auto=compress&cs=tinysrgb&w=1920",
+  title = "Nkoub Saghro Adventures",
+  script = "Morocco",
+  labelLeft = "Berber guided",
+  labelRight = "mountain treks",
+  marquee = ["Volcanic peaks", "Desert valleys", "Berber bivouac"],
+  imageSrc = "https://img.b2bpic.net/free-photo/wide-shot-cliff-desert-with-clear-blue_181624-11825.jpg?_wi=1",
   imageAlt = "",
-  cta = { text: "Book a stay", href: "#contact" },
+  cta = { text: "View circuits", href: "#pricing" },
   intro = true,
   introDelay = 0,
 }: HeroArchPosterProps) => {
   const reduce = useReducedMotion();
+  const { isRTL } = useLanguage();
   const opening = intro && !reduce;
   const [done, setDone] = useState(!opening);
   const [geo] = useState(() => {
@@ -102,17 +104,28 @@ const HeroArchPoster = ({
   };
 
   const letters = (text: string, from: number, step: number) =>
-    Array.from(text).map((ch, i) => (
+    isRTL ? (
       <motion.div
-        key={i}
         className="inline-block whitespace-pre"
         initial={{ y: "105%" }}
         animate={{ y: "0%" }}
-        transition={{ duration: 0.6, ease: EASE_OUT, delay: introDelay + from + i * step }}
+        transition={{ duration: 0.6, ease: EASE_OUT, delay: introDelay + from }}
       >
-        {ch}
+        {text}
       </motion.div>
-    ));
+    ) : (
+      Array.from(text).map((ch, i) => (
+        <motion.div
+          key={i}
+          className="inline-block whitespace-pre"
+          initial={{ y: "105%" }}
+          animate={{ y: "0%" }}
+          transition={{ duration: 0.6, ease: EASE_OUT, delay: introDelay + from + i * step }}
+        >
+          {ch}
+        </motion.div>
+      ))
+    );
 
   return (
     <section ref={track} aria-label="Hero" className="sticky top-0 z-[-1] h-svh bg-deep text-deep-foreground">
@@ -266,17 +279,28 @@ const HeroArchPoster = ({
                   <div aria-hidden="true">
                     {words.flatMap((word, wi) => [
                       <div key={wi} className="inline-block overflow-hidden whitespace-nowrap pb-[0.04em] align-top">
-                        {Array.from(word).map((ch, ci) => (
+                        {isRTL ? (
                           <motion.div
-                            key={ci}
                             className="inline-block whitespace-pre"
                             initial={reduce ? false : { y: "120%" }}
                             animate={{ y: "0%" }}
-                            transition={{ duration: 0.7, ease: EASE_OUT, delay: start + (offsets[wi] + ci) * 0.025 }}
+                            transition={{ duration: 0.7, ease: EASE_OUT, delay: start + wi * 0.08 }}
                           >
-                            {ch}
+                            {word}
                           </motion.div>
-                        ))}
+                        ) : (
+                          Array.from(word).map((ch, ci) => (
+                            <motion.div
+                              key={ci}
+                              className="inline-block whitespace-pre"
+                              initial={reduce ? false : { y: "120%" }}
+                              animate={{ y: "0%" }}
+                              transition={{ duration: 0.7, ease: EASE_OUT, delay: start + (offsets[wi] + ci) * 0.025 }}
+                            >
+                              {ch}
+                            </motion.div>
+                          ))
+                        )}
                       </div>,
                       wi < words.length - 1 ? " " : null,
                     ])}

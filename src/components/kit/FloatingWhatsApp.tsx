@@ -1,3 +1,5 @@
+import { useLanguage } from "@/utils/useLanguage";
+
 type FloatingWhatsAppProps = {
   phone?: string;
   message?: string;
@@ -5,10 +7,12 @@ type FloatingWhatsAppProps = {
 
 export default function FloatingWhatsApp({
   phone = "212629152743",
-  message = "Hello! I am interested in booking a trek with Nkoub Saghro Adventures.",
+  message,
 }: FloatingWhatsAppProps) {
+  const { t } = useLanguage();
   const cleanPhone = phone.replace(/[^\d]/g, "");
-  const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+  const activeMessage = message ?? t.whatsapp.message;
+  const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(activeMessage)}`;
 
   return (
     <a

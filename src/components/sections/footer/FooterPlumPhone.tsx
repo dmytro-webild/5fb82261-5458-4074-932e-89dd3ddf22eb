@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { useLanguage } from "@/utils/useLanguage";
 
 const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
@@ -15,31 +16,40 @@ type FooterPlumPhoneProps = {
   legal?: string;
   brand?: string;
   toTopText?: string;
+  poweredByText?: string;
+  studioName?: string;
+  studioUrl?: string;
   ariaLabel?: string;
   className?: string;
 };
 
-const defaultColumns: FooterColumn[] = [
-  { title: "Stay", links: [{ text: "Rooms", href: "#rooms" }, { text: "Spa", href: "#spa" }, { text: "Restaurant", href: "#restaurant" }] },
-  { title: "Visit", links: [{ text: "Getting here", href: "#contact" }, { text: "Gift cards", href: "#contact" }] },
-  { title: "Follow", links: [{ text: "Instagram", href: "#" }, { text: "Newsletter", href: "#" }] },
-];
-
 const EASE_OUT: [number, number, number, number] = [0.25, 1, 0.5, 1];
 
 const FooterPlumPhone = ({
-  phone = "+34 938 11 42 00",
-  email = "stay@villasolenne.es",
-  address = ["Passeig de la Ribera 42", "08870 Sitges, Spain"],
-  columns = defaultColumns,
-  legal = "Villa Solenne. All rights reserved.",
-  brand = "Villa Solenne",
-  toTopText = "To top",
+  phone = "+212 629-152743",
+  email = "guideberbretoursmoroco@gmail.com",
+  address,
+  columns,
+  legal,
+  brand = "Nkoub Saghro Adventures",
+  toTopText,
+  poweredByText,
+  studioName,
+  studioUrl,
   ariaLabel,
   className,
 }: FooterPlumPhoneProps) => {
   const reduce = useReducedMotion();
+  const { t } = useLanguage();
   const toTop = () => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+
+  const finalColumns = columns ?? t.footer.columns;
+  const finalAddress = address ?? t.footer.address;
+  const finalLegal = legal ?? t.footer.legal;
+  const finalToTop = toTopText ?? t.cta.backToTop;
+  const finalPoweredBy = poweredByText ?? t.footer.poweredBy;
+  const finalStudioName = studioName ?? t.footer.studioName;
+  const finalStudioUrl = studioUrl ?? t.footer.studioUrl;
 
   return (
     <footer
@@ -66,9 +76,9 @@ const FooterPlumPhone = ({
             {email}
           </a>
         )}
-        {address.length > 0 && (
+        {finalAddress.length > 0 && (
           <div className="mt-6 flex flex-col gap-1">
-            {address.map((line, index) => (
+            {finalAddress.map((line, index) => (
               <p key={index} className="text-[length:var(--text-small)] leading-[1.5] opacity-80">
                 {line}
               </p>
@@ -79,9 +89,9 @@ const FooterPlumPhone = ({
 
       <div className="mx-auto mt-[var(--section-space)] w-[var(--container)] border-t border-deep-foreground/20 pt-[clamp(1.5rem,3vw,2.5rem)]">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-          {columns.length > 0 && (
+          {finalColumns.length > 0 && (
             <div className="grid grid-cols-2 gap-x-[var(--gap)] gap-y-8 lg:flex lg:gap-[clamp(2rem,5vw,5rem)]">
-              {columns.map((column, index) => (
+              {finalColumns.map((column, index) => (
                 <nav key={index} aria-label={column.title} className="flex min-w-0 flex-col gap-3">
                   <p className="text-[length:var(--text-label)] uppercase tracking-[var(--label-tracking)] opacity-60">{column.title}</p>
                   {column.links.map((link, linkIndex) => (
@@ -93,11 +103,27 @@ const FooterPlumPhone = ({
               ))}
             </div>
           )}
-          <div className="flex flex-col items-start gap-4 lg:items-end">
+          <div className="flex flex-col items-start gap-3 lg:items-end">
             <button type="button" onClick={toTop} className="btn-link">
-              {toTopText}
+              {finalToTop}
             </button>
-            {legal && <p className="text-[length:var(--text-label)] uppercase tracking-[var(--label-tracking)] opacity-60">{legal}</p>}
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[length:var(--text-label)] uppercase tracking-[var(--label-tracking)] opacity-60">
+              {finalLegal && <span>{finalLegal}</span>}
+              {finalLegal && finalPoweredBy && <span aria-hidden="true">•</span>}
+              {finalPoweredBy && (
+                <span>
+                  {finalPoweredBy}{" "}
+                  <a
+                    href={finalStudioUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:opacity-100 transition-opacity"
+                  >
+                    {finalStudioName}
+                  </a>
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
