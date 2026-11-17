@@ -11,7 +11,7 @@ export default function HomePage() {
     <>
       <div id="hero" data-webild-section="HeroArchPoster" data-webild-section-id="HeroArchPoster-1" data-section="hero" className="contents" data-scene>
         <HeroArchPoster
-          title="Nkob Trek"
+          title="Nkoub Saghro Adventures"
           script="Morocco"
           labelLeft="Berber guided"
           labelRight="mountain treks"
@@ -74,85 +74,79 @@ export default function HomePage() {
 
       <div id="pricing" data-webild-section="PricingFramedSlider" data-webild-section-id="PricingFramedSlider-1" data-section="pricing">
         <PricingFramedSlider
-          title="Featured circuits"
+          title="Request a quote"
           script="circuits"
           items={[
             {
-              name: "Saghro 3-Day Trek",
-              price: "€180",
-              period: "per person",
-              description: "Explore volcanic rock peaks, deep gorges, and traditional Berber villages with local guides.",
+              name: "2-3 Days Saghro Circuit",
+              description: "A short mountain trek featuring iconic volcanic rock spires, Bab n Ali towers, and traditional Berber villages.",
               specs: [
                 {
                   label: "Duration",
-                  value: "3 Days"
+                  value: "2 - 3 Days"
                 },
                 {
                   label: "Difficulty",
                   value: "Moderate"
                 },
                 {
-                  label: "Group Size",
-                  value: "2 to 8"
+                  label: "Highlights",
+                  value: "Bab n Ali & Valleys"
                 }
               ],
               imageSrc: "https://img.b2bpic.net/free-photo/beautiful-rocky-cliffs-desert-captured-sunny-day_181624-22248.jpg",
               imageAlt: "Beautiful rocky cliffs on the desert captured on a sunny day",
               cta: {
-                text: "Inquire now",
-                href: "#contact-plum-form"
+                text: "Quote on WhatsApp",
+                href: "https://wa.me/212629152743?text=Hello%20Nkoub%20Saghro%20Adventures%2C%20I%20would%20like%20a%20quote%20for%20the%202-3%20Days%20Circuit."
               }
             },
             {
-              name: "Saghro to Mgoun",
-              price: "€350",
-              period: "per person",
-              description: "High-altitude traverse connecting volcanic peaks to lush valley oasis and mountain passes.",
+              name: "4-5 Days Saghro Traverse",
+              description: "Explore high mountain passes, dramatic canyons, lush palm oases, and bivouac nights under starry desert skies.",
               specs: [
                 {
                   label: "Duration",
-                  value: "5 Days"
+                  value: "4 - 5 Days"
+                },
+                {
+                  label: "Difficulty",
+                  value: "Moderate to Challenging"
+                },
+                {
+                  label: "Highlights",
+                  value: "Gorges & Oasis Camps"
+                }
+              ],
+              imageSrc: "https://img.b2bpic.net/free-photo/beautiful-scenery-rocky-canyons-surrounded-by-bushes-breathtaking-cloudy-sky_181624-4838.jpg",
+              imageAlt: "red rock mountain landscape",
+              cta: {
+                text: "Quote on WhatsApp",
+                href: "https://wa.me/212629152743?text=Hello%20Nkoub%20Saghro%20Adventures%2C%20I%20would%20like%20a%20quote%20for%20the%204-5%20Days%20Circuit."
+              }
+            },
+            {
+              name: "5-7 Days Grand Saghro Expedition",
+              description: "Comprehensive high-country expedition connecting volcanic peaks, remote nomadic settlements, and valley trails.",
+              specs: [
+                {
+                  label: "Duration",
+                  value: "5 - 7 Days"
                 },
                 {
                   label: "Difficulty",
                   value: "Challenging"
                 },
                 {
-                  label: "Group Size",
-                  value: "2 to 6"
-                }
-              ],
-              imageSrc: "https://img.b2bpic.net/free-photo/beautiful-scenery-rocky-canyons-surrounded-by-bushes-breathtaking-cloudy-sky_181624-4838.jpg",
-              imageAlt: "red rock mountain landscape",
-              cta: {
-                text: "Inquire now",
-                href: "#contact-plum-form"
-              }
-            },
-            {
-              name: "4x4 Desert Trek",
-              price: "€290",
-              period: "per person",
-              description: "Experience desert canyons, camel bivouacs under starry skies, and off-road trails.",
-              specs: [
-                {
-                  label: "Duration",
-                  value: "4 Days"
-                },
-                {
-                  label: "Difficulty",
-                  value: "Easy"
-                },
-                {
-                  label: "Group Size",
-                  value: "2 to 8"
+                  label: "Highlights",
+                  value: "Full Expedition & Peaks"
                 }
               ],
               imageSrc: "https://img.b2bpic.net/free-photo/beautiful-shot-rocky-hills-mountains-blue-cloudy-sky-daytime_181624-4537.jpg",
               imageAlt: "Beautiful shot of rocky hills and mountains under a blue cloudy sky at daytime",
               cta: {
-                text: "Inquire now",
-                href: "#contact-plum-form"
+                text: "Quote on WhatsApp",
+                href: "https://wa.me/212629152743?text=Hello%20Nkoub%20Saghro%20Adventures%2C%20I%20would%20like%20a%20quote%20for%20the%205-7%20Days%20Circuit."
               }
             }
           ]}
@@ -205,7 +199,7 @@ export default function HomePage() {
         <TestimonialPhotoQuote
           items={[
             {
-              quote: "The 3-day circuit with NkobTrek was incredible. Our local Berber guide was warm and the star camp was magic.",
+              quote: "The 3-day circuit with Nkoub Saghro Adventures was incredible. Our local Berber guide was warm and the star camp was magic.",
               name: "Natalie Webb",
               role: "Trekker from UK"
             },
@@ -263,9 +257,9 @@ export default function HomePage() {
           title="Plan Your Trek"
           script="Inquire"
           options={[
-            "3-Day Saghro Circuit",
-            "5-Day Saghro to Mgoun",
-            "Camel Bivouac Tour",
+            "2-3 Days Saghro Circuit",
+            "4-5 Days Saghro Traverse",
+            "5-7 Days Grand Expedition",
             "Custom Trek Inquiry"
           ]}
           submitText="Send Inquiry"
