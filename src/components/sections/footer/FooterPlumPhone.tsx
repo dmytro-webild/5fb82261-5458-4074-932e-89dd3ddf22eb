@@ -109,7 +109,7 @@ const FooterPlumPhone = ({
             </button>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[length:var(--text-label)] uppercase tracking-[var(--label-tracking)] opacity-60">
               {finalLegal && <span>{finalLegal}</span>}
-              {finalLegal && finalPoweredBy && <span aria-hidden="true">•</span>}
+              {finalLegal && finalPoweredBy && <span aria-hidden="true" className="opacity-50">|</span>}
               {finalPoweredBy && (
                 <span>
                   {finalPoweredBy}{" "}

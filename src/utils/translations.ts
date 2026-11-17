@@ -74,6 +74,12 @@ export interface Translations {
       sent: string;
       thanks: string;
     };
+    map: {
+      location: string;
+      directions: string;
+      mapsUrl: string;
+      embedUrl: string;
+    };
   };
   footer: {
     columns: {
@@ -261,6 +267,12 @@ export const translations: Record<Language, Translations> = {
         sent: "Sent!",
         thanks: "Thank you, we will reply shortly.",
       },
+      map: {
+        location: "Nkob, Jebel Saghro, Morocco",
+        directions: "Directions on Google Maps",
+        mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nkob,+Jebel+Saghro,+Morocco",
+        embedUrl: "https://maps.google.com/maps?q=Nkob,+Jebel+Saghro,+Morocco&t=&z=13&ie=UTF8&iwloc=&output=embed",
+      },
     },
     footer: {
       columns: [
@@ -289,10 +301,10 @@ export const translations: Record<Language, Translations> = {
         },
       ],
       address: ["Avenue Principal", "Nkob, Morocco"],
-      legal: "Nkoub Saghro Adventures 2026. All rights reserved.",
+      legal: "© 2026 Nkoub Saghro Adventures | All rights reserved",
       poweredBy: "Powered by",
-      studioName: "Webild",
-      studioUrl: "https://webild.com",
+      studioName: "webourguiba.com",
+      studioUrl: "https://webourguiba.com",
     },
     whatsapp: {
       message: "Hello! I am interested in booking a trek with Nkoub Saghro Adventures.",
@@ -467,6 +479,12 @@ export const translations: Record<Language, Translations> = {
         sent: "Envoyé !",
         thanks: "Merci, nous vous répondrons rapidement.",
       },
+      map: {
+        location: "Nkob, Jebel Saghro, Maroc",
+        directions: "Itinéraire sur Google Maps",
+        mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nkob,+Jebel+Saghro,+Morocco",
+        embedUrl: "https://maps.google.com/maps?q=Nkob,+Jebel+Saghro,+Morocco&t=&z=13&ie=UTF8&iwloc=&output=embed",
+      },
     },
     footer: {
       columns: [
@@ -495,10 +513,10 @@ export const translations: Record<Language, Translations> = {
         },
       ],
       address: ["Avenue Principale", "Nkob, Maroc"],
-      legal: "Nkoub Saghro Adventures 2026. Tous droits réservés.",
+      legal: "© 2026 Nkoub Saghro Adventures | Tous droits réservés",
       poweredBy: "Conçu par",
-      studioName: "Webild",
-      studioUrl: "https://webild.com",
+      studioName: "webourguiba.com",
+      studioUrl: "https://webourguiba.com",
     },
     whatsapp: {
       message: "Bonjour! Je souhaite réserver un circuit avec Nkoub Saghro Adventures.",
@@ -673,6 +691,12 @@ export const translations: Record<Language, Translations> = {
         sent: "تم الإرسال!",
         thanks: "شكراً لك، سنرد عليك في أقرب وقت.",
       },
+      map: {
+        location: "نكوب، جبل صغرو، المغرب",
+        directions: "الاتجاهات على خرائط جوجل",
+        mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nkob,+Jebel+Saghro,+Morocco",
+        embedUrl: "https://maps.google.com/maps?q=Nkob,+Jebel+Saghro,+Morocco&t=&z=13&ie=UTF8&iwloc=&output=embed",
+      },
     },
     footer: {
       columns: [
@@ -701,10 +725,10 @@ export const translations: Record<Language, Translations> = {
         },
       ],
       address: ["الشارع الرئيسي", "نكوب، المغرب"],
-      legal: "Nkoub Saghro Adventures 2026. جميع الحقوق محفوظة.",
-      poweredBy: "تصميم",
-      studioName: "Webild",
-      studioUrl: "https://webild.com",
+      legal: "© 2026 Nkoub Saghro Adventures | جميع الحقوق محفوظة",
+      poweredBy: "تصميم بواسطة",
+      studioName: "webourguiba.com",
+      studioUrl: "https://webourguiba.com",
     },
     whatsapp: {
       message: "مرحباً! أنا مهتم بحجز رحلة مع نكوب صغرو أدڤنتشرز.",
