@@ -51,6 +51,10 @@ export default function Layout() {
               title: "Guide",
               links: [
                 {
+                  text: "About Us",
+                  href: "#about"
+                },
+                {
                   text: "Trek FAQ",
                   href: "#faq-plus-accordion"
                 },

@@ -5,6 +5,7 @@ import GalleryWindowMerge from "@/components/sections/gallery/GalleryWindowMerge
 import TestimonialPhotoQuote from "@/components/sections/testimonial/TestimonialPhotoQuote";
 import FaqPlusAccordion from "@/components/sections/faq/FaqPlusAccordion";
 import ContactPlumForm from "@/components/sections/contact/ContactPlumForm";
+import AboutUsSection from "@/components/sections/about/AboutUsSection";
 import { useLanguage } from "@/utils/useLanguage";
 
 export default function HomePage() {
@@ -240,6 +241,19 @@ export default function HomePage() {
           options={t.contact.options}
           submitText={t.cta.sendInquiry}
           labels={t.contact.labels}
+        />
+      </div>
+
+      <div id="about" data-webild-section="AboutUsSection" data-webild-section-id="AboutUsSection-1" data-section="about">
+        <AboutUsSection
+          title={t.about.title}
+          subtitle={t.about.subtitle}
+          paragraph1={t.about.paragraph1}
+          paragraph2={t.about.paragraph2}
+          imageSrc="https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634442-r7ncvxln.jpg"
+          imageAlt="Mohamed à Nkob et massif du Jbel Saghro"
+          ctaText={t.cta.sendInquiry}
+          ctaHref="#contact-plum-form"
         />
       </div>
     </>

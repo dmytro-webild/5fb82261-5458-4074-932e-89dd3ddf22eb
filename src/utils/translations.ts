@@ -6,6 +6,7 @@ export interface Translations {
     circuits: string;
     approach: string;
     gallery: string;
+    about: string;
     faq: string;
     contact: string;
   };
@@ -109,6 +110,12 @@ export interface Translations {
   whatsapp: {
     message: string;
   };
+  about: {
+    title: string;
+    subtitle: string;
+    paragraph1: string;
+    paragraph2: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -118,6 +125,7 @@ export const translations: Record<Language, Translations> = {
       circuits: "Circuits",
       approach: "Why Us",
       gallery: "Gallery",
+      about: "About Us",
       faq: "FAQ",
       contact: "Contact",
     },
@@ -316,6 +324,7 @@ export const translations: Record<Language, Translations> = {
         {
           title: "Guide",
           links: [
+            { text: "About Us", href: "#about" },
             { text: "Trek FAQ", href: "#faq-plus-accordion" },
             { text: "Traveler Reviews", href: "#testimonial" },
             { text: "Inquire & Book", href: "#contact-plum-form" },
@@ -338,6 +347,14 @@ export const translations: Record<Language, Translations> = {
     whatsapp: {
       message: "Hello! I am interested in booking a trek with Nkoub Saghro Adventures.",
     },
+    about: {
+      title: "ABOUT US",
+      subtitle: "Discover Nkob, the heart of Jbel Saghro adventures.",
+      paragraph1:
+        "My name is Mohamed. I am a young native of Nkob, a rural locality situated in Zagora province, within the Drâa-Tafilalet region of Morocco. Nkob is located near the Jbel Saghro massif and is nicknamed the \"capital of kasbahs\", because it houses over 45 kasbahs, all surrounded by palm groves. The town is highly popular with tourists who enjoy mountain hiking and camping. That is why, as local youth, we work towards developing mountain tourism; as native locals, we know our land inside out.",
+      paragraph2:
+        "Travel is our passion. This website is dedicated to guiding everyone who wishes to explore this country, renowned for its great hospitality and warm welcome. I am here to guide you in discovering Morocco's nature, history, and geography. I also manage hotel bookings and organize all types of excursions — particularly to the mountains and the desert — along with many other activities.",
+    },
   },
   fr: {
     brand: "Nkoub Saghro Adventures",
@@ -345,6 +362,7 @@ export const translations: Record<Language, Translations> = {
       circuits: "Circuits",
       approach: "Notre Approche",
       gallery: "Galerie",
+      about: "À Propos",
       faq: "FAQ",
       contact: "Contact",
     },
@@ -543,9 +561,10 @@ export const translations: Record<Language, Translations> = {
         {
           title: "Guide",
           links: [
+            { text: "À Propos", href: "#about" },
             { text: "FAQ Randonnée", href: "#faq-plus-accordion" },
-            { text: "Avis voyageurs", href: "#testimonial" },
-            { text: "Demander & Réserver", href: "#contact-plum-form" },
+            { text: "Avis des voyageurs", href: "#testimonial" },
+            { text: "Demande & Réservation", href: "#contact-plum-form" },
           ],
         },
         {
@@ -565,6 +584,14 @@ export const translations: Record<Language, Translations> = {
     whatsapp: {
       message: "Bonjour! Je souhaite réserver un circuit avec Nkoub Saghro Adventures.",
     },
+    about: {
+      title: "À PROPOS DE NOUS",
+      subtitle: "Découvrez Nkob, le cœur des aventures du Jbel Saghro.",
+      paragraph1:
+        "Je m'appelle Mohamed. Je suis un jeune originaire de Nkob, une localité rurale située dans la province de Zagora, au sein de la région de Drâa-Tafilalet, au Maroc. Nkob se trouve à proximité du massif du Jbel Saghro et est surnommée la « capitale des kasbahs », car elle en abrite plus de 45, le tout entouré de palmeraies. La ville est très prisée des touristes amateurs de randonnée en montagne et de camping. C'est pourquoi, en tant que jeunes de la région, nous œuvrons au développement du tourisme de montagne ; étant natifs des lieux, nous connaissons notre territoire sur le bout des doigts.",
+      paragraph2:
+        "Le voyage est notre passion. Ce site a pour vocation d'accompagner tous ceux qui souhaitent explorer ce pays, réputé pour sa grande hospitalité et la chaleur de son accueil. Je suis là pour vous guider dans votre découverte de la nature, de l'histoire et de la géographie du Maroc. Je m'occupe également de la réservation d'hôtels et de l'organisation de tous types d'excursions — notamment vers les montagnes et le désert — ainsi que de nombreuses autres activités.",
+    },
   },
   ar: {
     brand: "Nkoub Saghro Adventures",
@@ -572,6 +599,7 @@ export const translations: Record<Language, Translations> = {
       circuits: "المسارات",
       approach: "لماذا نحن",
       gallery: "المعرض",
+      about: "من نحن",
       faq: "الأسئلة الشائعة",
       contact: "تواصل معنا",
     },
@@ -770,6 +798,7 @@ export const translations: Record<Language, Translations> = {
         {
           title: "دليل المسافر",
           links: [
+            { text: "عن الشركة", href: "#about" },
             { text: "الأسئلة الشائعة", href: "#faq-plus-accordion" },
             { text: "آراء الرحالة", href: "#testimonial" },
             { text: "الاستفسار والحجز", href: "#contact-plum-form" },
@@ -791,6 +820,14 @@ export const translations: Record<Language, Translations> = {
     },
     whatsapp: {
       message: "مرحباً! أنا مهتم بحجز رحلة مع نكوب صغرو أدڤنتشرز.",
+    },
+    about: {
+      title: "عن الشركة",
+      subtitle: "اكتشف نقوب، قلب مغامرات جبل صغرو.",
+      paragraph1:
+        "اسمي محمد. أنا شاب من أبناء مدينة نقوب، وهي جماعة قروية تقع في إقليم زاكورة ضمن جهة درعة تافيلالت بالمغرب. تقع نقوب بالقرب من سلسلة جبال صغرو وتُلقب بـ «عاصمة القصبات»، حيث تضم أكثر من 45 قصبة تحيط بها واحات النخيل. تحظى المدينة بإقبال كبير من السياح هواة المشي الجبلي والتخييم. ولهذا السبب، كشباب من المنطقة، نعمل على تطوير السياحة الجبلية، وباعتبارنا من أبناء المنطقة الأصليين، فنحن نعرف أرضنا عن ظهر قلب.",
+      paragraph2:
+        "السفر هو شغفنا. يهدف هذا الموقع إلى مرافقة كل من يرغب في استكشاف هذا البلد المشهور بكرم ضيافته ودفء استقباله. أنا هنا لإرشادكم في اكتشاف طبيعة المغرب وتاريخه وجغرافيته. كما أتولى حجز الفنادق وتنظيم جميع أنواع الرحلات — خاصة إلى الجبال والصحراء — بالإضافة إلى العديد من الأنشطة الأخرى.",
     },
   },
 };
