@@ -3,6 +3,7 @@
 import { useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import useMenuDialog from "@/components/kit/useMenuDialog";
+import Media from "@/components/kit/Media";
 import { useLanguage } from "@/utils/useLanguage";
 import type { Language } from "@/utils/translations";
 
@@ -10,6 +11,7 @@ type NavItem = { name: string; href: string };
 
 type NavbarSealCornerProps = {
   brand?: string;
+  logoImageSrc?: string;
   navItems?: NavItem[];
   cta?: { text: string; href: string };
   menuText?: string;
@@ -51,6 +53,7 @@ const LanguageSwitcher = ({ className = "" }: { className?: string }) => {
 
 const NavbarSealCorner = ({
   brand = "Nkoub Saghro Adventures",
+  logoImageSrc = "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795004999169-ivq2qx3d.png",
   navItems = [],
   cta = { text: "Book Now", href: "#contact-plum-form" },
   menuText = "Menu",
@@ -97,12 +100,18 @@ const NavbarSealCorner = ({
               </textPath>
             </text>
           </svg>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} className="absolute left-1/2 top-1/2 size-[1.25rem] -translate-x-1/2 -translate-y-1/2">
-            {[0, 45, 90, 135].map((deg) => (
-              <path key={deg} d="M12 1 V23" transform={`rotate(${deg} 12 12)`} />
-            ))}
-            <circle cx="12" cy="12" r="3.2" />
-          </svg>
+          {logoImageSrc ? (
+            <div className="absolute left-1/2 top-1/2 size-[2.5rem] -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden flex items-center justify-center p-0.5 bg-black/20">
+              <Media src={logoImageSrc} alt={brand} className="size-full object-contain rounded-full" />
+            </div>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} className="absolute left-1/2 top-1/2 size-[1.25rem] -translate-x-1/2 -translate-y-1/2">
+              {[0, 45, 90, 135].map((deg) => (
+                <path key={deg} d="M12 1 V23" transform={`rotate(${deg} 12 12)`} />
+              ))}
+              <circle cx="12" cy="12" r="3.2" />
+            </svg>
+          )}
         </a>
 
         <div className="pointer-events-auto absolute end-[var(--gutter)] top-[clamp(1rem,3vh,1.75rem)] flex h-[4.5rem] items-center gap-[0.5rem] sm:gap-[0.75rem]">
@@ -149,7 +158,12 @@ const NavbarSealCorner = ({
             className="fixed inset-0 z-[70] flex flex-col bg-deep px-[var(--gutter)] pb-[var(--gutter)] pt-[clamp(1rem,3vh,1.75rem)] text-deep-foreground lg:hidden"
           >
             <div className="flex items-center justify-between">
-              <LanguageSwitcher />
+              <div className="flex items-center gap-2">
+                {logoImageSrc && (
+                  <Media src={logoImageSrc} alt={brand} className="size-9 rounded-full object-contain border border-current/20" />
+                )}
+                <LanguageSwitcher />
+              </div>
               <button type="button" onClick={() => setOpen(false)} aria-label={t.menu.close || closeText} className="flex size-[2.75rem] items-center justify-center rounded-full border border-current">
                 <div aria-hidden="true" className="relative size-[1rem]">
                   <div className="absolute left-0 top-1/2 h-px w-full rotate-45 bg-current" />

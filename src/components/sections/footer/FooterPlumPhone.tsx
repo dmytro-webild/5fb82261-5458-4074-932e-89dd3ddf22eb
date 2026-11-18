@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useLanguage } from "@/utils/useLanguage";
+import Media from "@/components/kit/Media";
 
 const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
@@ -15,6 +16,7 @@ type FooterPlumPhoneProps = {
   columns?: FooterColumn[];
   legal?: string;
   brand?: string;
+  logoImageSrc?: string;
   toTopText?: string;
   poweredByText?: string;
   studioName?: string;
@@ -32,6 +34,7 @@ const FooterPlumPhone = ({
   columns,
   legal,
   brand = "Nkoub Saghro Adventures",
+  logoImageSrc = "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795004999169-ivq2qx3d.png",
   toTopText,
   poweredByText,
   studioName,
@@ -57,11 +60,21 @@ const FooterPlumPhone = ({
       className={cn("relative z-10 bg-deep pt-[var(--section-space)] pb-[clamp(1.5rem,3vw,2.5rem)] text-deep-foreground", className)}
     >
       <div className="mx-auto flex w-[var(--container)] flex-col items-center text-center">
-        <svg aria-hidden="true" viewBox="0 0 40 40" className="h-10 w-10 text-current">
-          <path d="M20 4 V36 M4 20 H36 M8.7 8.7 L31.3 31.3 M31.3 8.7 L8.7 31.3" stroke="currentColor" strokeWidth={1} strokeLinecap="round" fill="none" />
-          <circle cx="20" cy="20" r="3" stroke="currentColor" strokeWidth={1} fill="none" />
-        </svg>
-        <p className="mt-6 text-[length:var(--text-label)] uppercase tracking-[var(--label-tracking)] opacity-70">{brand}</p>
+        {logoImageSrc ? (
+          <a href="#" aria-label={brand} className="inline-block transition-transform hover:scale-105">
+            <Media
+              src={logoImageSrc}
+              alt={brand}
+              className="h-20 w-auto max-w-[14rem] object-contain rounded-2xl shadow-md"
+            />
+          </a>
+        ) : (
+          <svg aria-hidden="true" viewBox="0 0 40 40" className="h-10 w-10 text-current">
+            <path d="M20 4 V36 M4 20 H36 M8.7 8.7 L31.3 31.3 M31.3 8.7 L8.7 31.3" stroke="currentColor" strokeWidth={1} strokeLinecap="round" fill="none" />
+            <circle cx="20" cy="20" r="3" stroke="currentColor" strokeWidth={1} fill="none" />
+          </svg>
+        )}
+        <p className="mt-4 text-[length:var(--text-label)] uppercase tracking-[var(--label-tracking)] opacity-70">{brand}</p>
         <motion.div initial={reduce ? false : "hidden"} whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-[clamp(2rem,5vw,4rem)] overflow-hidden pb-[0.06em]">
           <motion.a
             href={`tel:${phone.replace(/[^\d+]/g, "")}`}
