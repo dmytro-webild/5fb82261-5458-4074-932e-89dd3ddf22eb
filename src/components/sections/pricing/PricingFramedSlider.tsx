@@ -23,10 +23,23 @@ type Plan = {
   cta?: { text: string; href: string };
 };
 
+type PricingTableData = {
+  title: string;
+  subtitle: string;
+  peopleHeader: string;
+  priceHeader: string;
+  perPersonLabel: string;
+  rows: { people: string; price: string }[];
+  bookNow: string;
+  waMessage: string;
+  note?: string;
+};
+
 type PricingFramedSliderProps = {
   title?: string;
   script?: string;
   items?: Plan[];
+  table?: PricingTableData;
   imageSrc?: string;
   imageAlt?: string;
   ariaLabel?: string;
@@ -39,6 +52,7 @@ const PricingFramedSlider = ({
   items = [
     { name: "Garden Room", price: "€240", period: "per night", description: "A quiet room that opens onto the lemon garden.", specs: [{ label: "Guests", value: "2" }], cta: { text: "Book", href: "#contact" } },
   ],
+  table,
   imageSrc,
   imageAlt = "",
   ariaLabel,
@@ -175,6 +189,80 @@ const PricingFramedSlider = ({
                     <path d="m6 3 5 5-5 5" stroke="currentColor" strokeWidth={1} />
                   </svg>
                 </button>
+              </div>
+            )}
+
+            {table && (
+              <div className="mt-14 md:mt-20 mx-auto max-w-4xl rounded-[1.5rem] border border-emerald-500/30 bg-background/80 p-6 md:p-8 backdrop-blur-md shadow-2xl">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/60">
+                  <div>
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider mb-2">
+                      <svg className="w-4 h-4 fill-emerald-400" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z" />
+                      </svg>
+                      {table.title}
+                    </span>
+                    <h4 className="text-xl md:text-2xl font-bold text-foreground">{table.subtitle}</h4>
+                  </div>
+                  <a
+                    href={`https://wa.me/212650850571?text=${encodeURIComponent(table.waMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-all duration-200 shadow-lg shadow-emerald-600/30 shrink-0 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l.999 1.586-1.052 3.841 3.931-.968.865.207z" />
+                    </svg>
+                    {table.bookNow}
+                  </a>
+                </div>
+
+                <div className="mt-6 overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-border/50 text-xs md:text-sm uppercase tracking-wider text-muted-foreground font-semibold">
+                        <th className="py-3.5 px-4">{table.peopleHeader}</th>
+                        <th className="py-3.5 px-4 text-right">{table.priceHeader}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/30">
+                      {table.rows.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-emerald-500/5 transition-colors">
+                          <td className="py-4 px-4 font-semibold text-foreground text-base md:text-lg">
+                            {row.people}
+                          </td>
+                          <td className="py-4 px-4 text-right">
+                            <span className="text-2xl md:text-3xl font-extrabold text-emerald-400 tracking-tight">
+                              {row.price}
+                            </span>
+                            <span className="ml-1.5 text-xs md:text-sm font-semibold uppercase text-muted-foreground">
+                              {table.perPersonLabel}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {table.note && (
+                  <div className="mt-6 pt-4 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs md:text-sm text-muted-foreground">
+                    <p className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {table.note}
+                    </p>
+                    <a
+                      href="https://wa.me/212650850571"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-400 hover:text-emerald-300 hover:underline font-semibold flex items-center gap-1 transition-colors"
+                    >
+                      WhatsApp: +212 650850571
+                    </a>
+                  </div>
+                )}
               </div>
             )}
           </motion.div>
