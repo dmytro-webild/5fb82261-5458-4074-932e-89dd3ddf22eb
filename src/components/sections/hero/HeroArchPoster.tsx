@@ -1,5 +1,5 @@
-import { useRef, useState, type CSSProperties, type MouseEvent } from "react";
-import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform, type Transition } from "motion/react";
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform, type Transition } from "motion/react";
 import { MotionMedia } from "@/components/kit/Media";
 import { useLanguage } from "@/utils/useLanguage";
 
@@ -9,12 +9,21 @@ type HeroArchPosterProps = {
   labelLeft?: string;
   labelRight?: string;
   marquee?: string[];
+  images?: string[];
   imageSrc?: string;
   imageAlt?: string;
   cta?: { text: string; href: string };
   intro?: boolean;
   introDelay?: number;
 };
+
+const DEFAULT_HERO_IMAGES = [
+  "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634441-kwx8amxk.jpg",
+  "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634442-r7ncvxln.jpg",
+  "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634443-0p01epoa.jpg",
+  "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634443-hukclou2.jpg",
+  "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634444-eoic5ggq.jpg"
+];
 
 const EASE_OUT: [number, number, number, number] = [0.25, 1, 0.5, 1];
 const EASE_RISE: [number, number, number, number] = [0.75, 0, 0.25, 1];
@@ -44,7 +53,8 @@ const HeroArchPoster = ({
   labelLeft = "Berber guided",
   labelRight = "mountain treks",
   marquee = ["Volcanic peaks", "Desert valleys", "Berber bivouac"],
-  imageSrc = "https://img.b2bpic.net/free-photo/wide-shot-cliff-desert-with-clear-blue_181624-11825.jpg?_wi=1",
+  images,
+  imageSrc,
   imageAlt = "",
   cta = { text: "View circuits", href: "#pricing" },
   intro = true,
@@ -54,6 +64,18 @@ const HeroArchPoster = ({
   const { isRTL } = useLanguage();
   const opening = intro && !reduce;
   const [done, setDone] = useState(!opening);
+
+  const heroImages = images && images.length > 0 ? images : (imageSrc ? [imageSrc, ...DEFAULT_HERO_IMAGES] : DEFAULT_HERO_IMAGES);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (heroImages.length <= 1 || reduce) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [heroImages.length, reduce]);
+
   const [geo] = useState(() => {
     const W = typeof window === "undefined" ? 1440 : window.innerWidth;
     const H = typeof window === "undefined" ? 900 : window.innerHeight;
@@ -242,21 +264,31 @@ const HeroArchPoster = ({
             initial={opening ? { scale: 0.8, y: "-20vh" } : false}
             animate={{ scale: [0.8, 0.8, 1], y: ["-20vh", "-20vh", "0vh"] }}
             transition={opening ? { duration: INTRO_END, delay: introDelay, times: [0, DIVE_AT / INTRO_END, 1], ease: ["linear", EASE_DIVE] } : { duration: 0 }}
-            className="absolute inset-0 origin-bottom"
+            className="absolute inset-0 origin-bottom overflow-hidden"
           >
-            <MotionMedia
-              src={imageSrc}
-              alt={imageAlt}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              style={reduce ? undefined : { y: imageY }}
-              className="absolute inset-x-0 top-0 h-[110%] w-full origin-[50%_75%] object-cover object-center"
-            />
-            <div className="absolute inset-x-0 top-0 h-[110%] bg-black/25" />
-            <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-black/25 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-black/25 to-transparent" />
-            <div className="absolute inset-x-0 top-full h-[10%] bg-black/25" />
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.4, ease: "easeInOut" }}
+                className="absolute inset-0 size-full"
+              >
+                <MotionMedia
+                  src={heroImages[currentSlide]}
+                  alt={imageAlt || `Hero adventure slide ${currentSlide + 1}`}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  style={reduce ? undefined : { y: imageY }}
+                  className="absolute inset-x-0 top-0 h-[110%] w-full origin-[50%_75%] object-cover object-center"
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[110%] bg-black/35" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[65%] bg-gradient-to-b from-black/60 via-black/20 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
           </motion.div>
 
           <motion.div
@@ -351,6 +383,49 @@ const HeroArchPoster = ({
               </motion.div>
             )}
           </motion.div>
+
+          {heroImages.length > 1 && (
+            <motion.div
+              initial={reduce ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: restDelay + 0.2 }}
+              className="absolute bottom-[clamp(1.5rem,5vh,3rem)] right-[clamp(1rem,4vw,3rem)] z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-3 py-1.5 backdrop-blur-md"
+            >
+              <button
+                type="button"
+                onClick={() => setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length)}
+                aria-label="Previous slide"
+                className="p-1 text-white/70 transition-colors hover:text-white"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div className="flex items-center gap-1.5 px-1">
+                {heroImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setCurrentSlide(idx)}
+                    aria-label={`Go to slide ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentSlide ? "w-5 bg-emerald-400" : "w-1.5 bg-white/40 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setCurrentSlide((prev) => (prev + 1) % heroImages.length)}
+                aria-label="Next slide"
+                className="p-1 text-white/70 transition-colors hover:text-white"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </motion.div>
+          )}
 
           {cta && (
             <motion.a

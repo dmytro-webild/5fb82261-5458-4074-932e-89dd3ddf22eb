@@ -19,8 +19,14 @@ export default function HomePage() {
           labelLeft={t.hero.labelLeft}
           labelRight={t.hero.labelRight}
           marquee={t.hero.marquee}
-          imageSrc="https://img.b2bpic.net/free-photo/wide-shot-cliff-desert-with-clear-blue_181624-11825.jpg?_wi=1"
-          imageAlt="wide desert cliff landscape"
+          images={[
+            "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634441-kwx8amxk.jpg",
+            "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634442-r7ncvxln.jpg",
+            "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634443-0p01epoa.jpg",
+            "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634443-hukclou2.jpg",
+            "https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795006634444-eoic5ggq.jpg"
+          ]}
+          imageAlt="Nkoub Saghro mountain adventures slideshow"
           cta={{
             text: t.cta.viewCircuits,
             href: "#pricing"
@@ -98,7 +104,7 @@ export default function HomePage() {
               imageAlt: "Beautiful rocky cliffs on the desert captured on a sunny day",
               cta: {
                 text: t.cta.quoteWhatsapp,
-                href: `https://wa.me/212629152743?text=${encodeURIComponent(t.pricing.items[0].waMessage)}`
+                href: `https://wa.me/212650850571?text=${encodeURIComponent(t.pricing.items[0].waMessage)}`
               }
             },
             {
@@ -122,7 +128,7 @@ export default function HomePage() {
               imageAlt: "red rock mountain landscape",
               cta: {
                 text: t.cta.quoteWhatsapp,
-                href: `https://wa.me/212629152743?text=${encodeURIComponent(t.pricing.items[1].waMessage)}`
+                href: `https://wa.me/212650850571?text=${encodeURIComponent(t.pricing.items[1].waMessage)}`
               }
             },
             {
@@ -146,7 +152,7 @@ export default function HomePage() {
               imageAlt: "Beautiful shot of rocky hills and mountains under a blue cloudy sky at daytime",
               cta: {
                 text: t.cta.quoteWhatsapp,
-                href: `https://wa.me/212629152743?text=${encodeURIComponent(t.pricing.items[2].waMessage)}`
+                href: `https://wa.me/212650850571?text=${encodeURIComponent(t.pricing.items[2].waMessage)}`
               }
             }
           ]}
