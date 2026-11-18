@@ -73,7 +73,7 @@ export default function Layout() {
                 },
                 {
                   text: "WhatsApp Direct",
-                  href: "https://wa.me/212629152743"
+                  href: "https://wa.me/212650850571"
                 }
               ]
             }
@@ -81,7 +81,7 @@ export default function Layout() {
           toTopText="Back to top"
         />
       </footer>
-      <FloatingWhatsApp phone="212629152743" />
+      <FloatingWhatsApp phone="212650850571" />
     </div>
   );
 }

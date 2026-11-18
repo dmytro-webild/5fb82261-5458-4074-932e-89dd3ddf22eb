@@ -212,9 +212,9 @@ export const translations: Record<Language, Translations> = {
         priceHeader: "Price per person",
         perPersonLabel: "/ person",
         rows: [
-          { people: "2 people", price: "590 €" },
-          { people: "3 people", price: "550 €" },
-          { people: "4 people or more", price: "510 €" },
+          { people: "2 people", price: "589 €" },
+          { people: "3 people", price: "549 €" },
+          { people: "4 people or more", price: "499 €" },
         ],
         bookNow: "Book Now",
         waMessage: "Hello Nkoub Saghro Adventures, I would like to book a trek with your official rates.",
@@ -224,7 +224,7 @@ export const translations: Record<Language, Translations> = {
     gallery: {
       word: "SAGHRO",
       quote: "Guiding mountain travelers safely through Southern Morocco for two decades.",
-      credit: "Brahim, Lead Berber Guide",
+      credit: "Mouhamed, Lead Berber Guide",
       items: [
         "Volcanic rock peaks",
         "Desert bivouac camp",
@@ -325,7 +325,7 @@ export const translations: Record<Language, Translations> = {
           title: "Connect",
           links: [
             { text: "Instagram", href: "#" },
-            { text: "WhatsApp Direct", href: "https://wa.me/212629152743" },
+            { text: "WhatsApp Direct", href: "https://wa.me/212650850571" },
           ],
         },
       ],
@@ -439,9 +439,9 @@ export const translations: Record<Language, Translations> = {
         priceHeader: "Prix par personne",
         perPersonLabel: "/ personne",
         rows: [
-          { people: "2 personnes", price: "590 €" },
-          { people: "3 personnes", price: "550 €" },
-          { people: "4 personnes ou plus", price: "510 €" },
+          { people: "2 personnes", price: "589 €" },
+          { people: "3 personnes", price: "549 €" },
+          { people: "4 personnes ou plus", price: "499 €" },
         ],
         bookNow: "Réserver maintenant",
         waMessage: "Bonjour Nkoub Saghro Adventures, je souhaite réserver un circuit aux tarifs officiels.",
@@ -451,7 +451,7 @@ export const translations: Record<Language, Translations> = {
     gallery: {
       word: "SAGHRO",
       quote: "Guider les voyageurs en montagne en toute sécurité dans le Sud marocain depuis deux décennies.",
-      credit: "Brahim, Guide Berbère Principal",
+      credit: "Mouhamed, Guide Berbère Principal",
       items: [
         "Sommets rocheux volcaniques",
         "Camp bivouac dans le désert",
@@ -552,7 +552,7 @@ export const translations: Record<Language, Translations> = {
           title: "Contact",
           links: [
             { text: "Instagram", href: "#" },
-            { text: "WhatsApp Direct", href: "https://wa.me/212629152743" },
+            { text: "WhatsApp Direct", href: "https://wa.me/212650850571" },
           ],
         },
       ],
@@ -666,9 +666,9 @@ export const translations: Record<Language, Translations> = {
         priceHeader: "السعر للشخص",
         perPersonLabel: "/ للشخص",
         rows: [
-          { people: "شخصان (2)", price: "590 €" },
-          { people: "3 أشخاص", price: "550 €" },
-          { people: "4 أشخاص أو أكثر", price: "510 €" },
+          { people: "شخصان (2)", price: "589 €" },
+          { people: "3 أشخاص", price: "549 €" },
+          { people: "4 أشخاص أو أكثر", price: "499 €" },
         ],
         bookNow: "احجز الآن",
         waMessage: "مرحبا نكوب صغرو أدڤنتشرز، أرغب في حجز رحلة بالأسعار الرسمية.",
@@ -678,7 +678,7 @@ export const translations: Record<Language, Translations> = {
     gallery: {
       word: "صغرو",
       quote: "نرافق رحالة الجبال بأمان في جنوب المغرب منذ عقدين من الزمن.",
-      credit: "إبراهيم، المرشد البربري الرئيسي",
+      credit: "موحامد، المرشد البربري الرئيسي",
       items: [
         "قمم صخرية بركانية",
         "مخيم صحراوي",
@@ -779,7 +779,7 @@ export const translations: Record<Language, Translations> = {
           title: "التواصل",
           links: [
             { text: "إنستغرام", href: "#" },
-            { text: "واتساب مباشر", href: "https://wa.me/212629152743" },
+            { text: "واتساب مباشر", href: "https://wa.me/212650850571" },
           ],
         },
       ],
