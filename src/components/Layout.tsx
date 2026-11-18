@@ -9,6 +9,7 @@ export default function Layout() {
       <header data-webild-section="Header">
         <NavbarSealCorner
           brand="Nkoub Saghro Adventures"
+          logoImageSrc="https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795004999169-ivq2qx3d.png"
           cta={{
             text: "Book Now",
             href: "#contact-plum-form"
@@ -21,6 +22,7 @@ export default function Layout() {
       <footer data-webild-section="Footer" data-section="footer">
         <FooterPlumPhone
           brand="Nkoub Saghro Adventures"
+          logoImageSrc="https://storage.googleapis.com/webild/users/user_3MFjbGIn3Kqfnlr7fvQBozGHRvR/uploaded-1795004999169-ivq2qx3d.png"
           phone="+212 629-152743"
           email="guideberbretoursmoroco@gmail.com"
           address={[
