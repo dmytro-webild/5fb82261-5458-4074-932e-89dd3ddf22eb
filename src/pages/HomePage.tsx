@@ -75,6 +75,7 @@ export default function HomePage() {
         <PricingFramedSlider
           title={t.pricing.title}
           script={t.pricing.script}
+          table={t.pricing.table}
           items={[
             {
               name: t.pricing.items[0].name,

@@ -46,6 +46,20 @@ export interface Translations {
       specs: { duration: string; difficulty: string; highlights: string };
       waMessage: string;
     }[];
+    table: {
+      title: string;
+      subtitle: string;
+      peopleHeader: string;
+      priceHeader: string;
+      perPersonLabel: string;
+      rows: {
+        people: string;
+        price: string;
+      }[];
+      bookNow: string;
+      waMessage: string;
+      note: string;
+    };
   };
   gallery: {
     word: string;
@@ -191,6 +205,21 @@ export const translations: Record<Language, Translations> = {
           waMessage: "Hello Nkoub Saghro Adventures, I would like a quote for the 5-7 Days Circuit.",
         },
       ],
+      table: {
+        title: "Official Pricing Table",
+        subtitle: "Pricing per person (in Euros)",
+        peopleHeader: "Number of people",
+        priceHeader: "Price per person",
+        perPersonLabel: "/ person",
+        rows: [
+          { people: "2 people", price: "590 €" },
+          { people: "3 people", price: "550 €" },
+          { people: "4 people or more", price: "510 €" },
+        ],
+        bookNow: "Book Now",
+        waMessage: "Hello Nkoub Saghro Adventures, I would like to book a trek with your official rates.",
+        note: "Prices per person in Euros (€). Displayed exactly as provided with no hidden fees.",
+      },
     },
     gallery: {
       word: "SAGHRO",
@@ -403,6 +432,21 @@ export const translations: Record<Language, Translations> = {
           waMessage: "Bonjour Nkoub Saghro Adventures, je souhaite un devis pour le circuit 5-7 jours.",
         },
       ],
+      table: {
+        title: "Grille Tarifaire Officielle",
+        subtitle: "Tarifs par personne (en Euros)",
+        peopleHeader: "Nombre de personnes",
+        priceHeader: "Prix par personne",
+        perPersonLabel: "/ personne",
+        rows: [
+          { people: "2 personnes", price: "590 €" },
+          { people: "3 personnes", price: "550 €" },
+          { people: "4 personnes ou plus", price: "510 €" },
+        ],
+        bookNow: "Réserver maintenant",
+        waMessage: "Bonjour Nkoub Saghro Adventures, je souhaite réserver un circuit aux tarifs officiels.",
+        note: "Prix par personne en Euros (€). Affichés exactement comme indiqués sans frais cachés.",
+      },
     },
     gallery: {
       word: "SAGHRO",
@@ -615,6 +659,21 @@ export const translations: Record<Language, Translations> = {
           waMessage: "مرحبا نكوب صغرو أدڤنتشرز، أرغب في الحصول على عرض سعر لمسار 5-7 أيام.",
         },
       ],
+      table: {
+        title: "جدول الأسعار الرسمي",
+        subtitle: "الأسعار للشخص الواحد (باليورو)",
+        peopleHeader: "عدد الأشخاص",
+        priceHeader: "السعر للشخص",
+        perPersonLabel: "/ للشخص",
+        rows: [
+          { people: "شخصان (2)", price: "590 €" },
+          { people: "3 أشخاص", price: "550 €" },
+          { people: "4 أشخاص أو أكثر", price: "510 €" },
+        ],
+        bookNow: "احجز الآن",
+        waMessage: "مرحبا نكوب صغرو أدڤنتشرز، أرغب في حجز رحلة بالأسعار الرسمية.",
+        note: "الأسعار للشخص الواحد باليورو (€) معروضة تماماً كما هي محددة بدون أي رسوم خفية.",
+      },
     },
     gallery: {
       word: "صغرو",
